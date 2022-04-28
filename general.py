@@ -1,4 +1,5 @@
 import os
+from re import X
 
 # Buat project (folder) tergantung nama website yang diinputkan pertama kali
 # Each website you crawl is a separated project (folder)
@@ -58,7 +59,7 @@ def count_time(seconds):
 	seconds %= 60
 	
 	if hour == 0 and minutes == 0:
-	    return "%d Second" % (seconds)
+	    return "%d Second" % (seconds)    
 	elif hour == 0:
 	    return "%d Minute %d Second" % (minutes, seconds)
 	else:

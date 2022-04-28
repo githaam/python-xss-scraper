@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from KMPSearch import *
 
-import concurrent.futures
+import concurrent.futures, itertools
 
 class Scanner:
 
@@ -21,18 +21,18 @@ class Scanner:
         else:
             soup = BeautifulSoup(response.text, 'html.parser')
             
-            # self.result = KMPSearch(pattern[8], str(soup))
-            # print (pattern)
-            with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-                list_hasil = executor.map(KMPSearch, pattern, str(soup))
+            with concurrent.futures.ThreadPoolExecutor() as executor: #Add max_workers=50
+                list_hasil = executor.map(KMPSearch, pattern, itertools.repeat(str(soup)))
             
             for hasil in list_hasil:
-                # print (f'ini hasilnya {hasil}')
                 self.result.add(str(hasil))
+                # print (f'ini hasilnya {hasil}')
+                # if "Not Found" not in hasil:
+                #     self.result.add(str(hasil))
+
             
+            self.result.remove("Not Found")
             #     if self.result == 'Not Found': self.result = ''
-            
-            # PAKAI THREAD LAGI
             
     # def iter_scan(self, soup, pattern):
     #     print (pattern)

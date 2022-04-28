@@ -41,7 +41,7 @@ def crawl():
         print(f"Pattern found on {len(Spider.found)} page(s)")
 
 if __name__ == '__main__':
-    TARGET, DEEP_LEVEL = 'https://www.detik.com/', 3 #change this
+    TARGET, DEEP_LEVEL = 'https://blog.devtiersoftware.com/posts/ipsam-voluptatum-nisi-magni-et', 0 #change this
     
     #ts = datetime.datetime.now()
     start = time.process_time()

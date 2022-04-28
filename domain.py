@@ -25,5 +25,11 @@ def fixed_url(page_url, url):
 
     if sanitizeURL.scheme == '' and sanitizeURL.netloc == '' and sanitizeURL.path != '':
         url = get_base_url(page_url) + "/" +url
-
+    
     return url
+
+def remove_slash(url):
+    if url[-1:] == "/":
+        return url[:-1]
+    else:
+        return url

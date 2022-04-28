@@ -56,12 +56,17 @@ class Spider:
                 Spider.queue.remove(page_url)
             else:
                 Spider.add_links_to_temp(links) #tambah disini SELESAIKAN DISINI
+
+                if result: 
+                #     # Bikin prose jadi lelet v
+                    list_result = [str(s) for s in result] # Move set to list
+                    final_result = ", " . join(list_result) # Join the list
+                    # Bikin proses jadi lelet ^
+
+                # Spider.found.add(page_url)
+                    Spider.found.add(final_result + " on " + page_url + "\n")
+                    # Add the list string to the file
                 
-                # kalo dia cuma nemu 1 ya ga bakal ketemu if elsenya
-                # gimana caranya biar dia ga ngebaca si not foundnya aja
-                result.add("akwoekaoweka")
-                if len(result) >= 1 and "Not Found" not in result:
-                    Spider.found.add(page_url)
                 Spider.queue.remove(page_url)
                 Spider.crawled.add(page_url)
                 

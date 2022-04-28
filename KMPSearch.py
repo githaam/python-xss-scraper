@@ -4,6 +4,11 @@ def KMPSearch(pat, txt):
 	N = len(txt)
 	hasil = "Not Found"
 
+	# if pat:
+	# 	print ("pattern masuk " + pat)
+	# if txt:
+	# 	print ("txt masuk " + txt)
+
 	# create lps[] that will hold the longest prefix suffix
 	# values for pattern
 	lps = [0]*M
@@ -12,6 +17,8 @@ def KMPSearch(pat, txt):
 	# Preprocess the pattern (calculate lps[] array)
 	computeLPSArray(pat, M, lps)
 
+	# print (pat) #nanti dihapus
+
 	i = 0 # index for txt[]
 	while i < N:
 		if pat[j] == txt[i]:
@@ -19,7 +26,10 @@ def KMPSearch(pat, txt):
 			j += 1
 
 		if j == M:
-			hasil = ("Found pattern at index " + str(i-j))
+			# found / ditemukan
+			# hasil = ("Found pattern " + pat + " at index " + str(i-j)) #ASLI
+			hasil = (pat + " at index " + str(i-j))
+			# hasil =  pat
 			j = lps[j-1]
 
 		# mismatch after j matches
@@ -41,7 +51,7 @@ def computeLPSArray(pat, M, lps):
 
 	# the loop calculates lps[i] for i = 1 to M-1
 	while i < M:
-		if pat[i]== pat[len]:
+		if pat[i] == pat[len]:
 			len += 1
 			lps[i] = len
 			i += 1
